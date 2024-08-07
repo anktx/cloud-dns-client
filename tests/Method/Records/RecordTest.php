@@ -25,7 +25,7 @@ final class RecordTest extends TestCase
 
     public function testTtlIsInteger(): void
     {
-        $record = Record::create($this->zoneObject());
+        $record = Record::create($this->recordObject());
 
         $this->assertEquals(3600, $record->ttl);
     }
@@ -34,9 +34,9 @@ final class RecordTest extends TestCase
     {
         $arr = [
             'items' => [
-                $this->zoneObject(),
-                $this->zoneObject(),
-                $this->zoneObject(),
+                $this->recordObject(),
+                $this->recordObject(),
+                $this->recordObject(),
             ],
         ];
 
@@ -51,7 +51,7 @@ final class RecordTest extends TestCase
         $this->expectException(\BadMethodCallException::class);
 
         $records = new Records();
-        $records[0] = $this->zoneObject();
+        $records[0] = Record::create($this->recordObject());
     }
 
     public function testOffsetUnsetException(): void
@@ -62,7 +62,7 @@ final class RecordTest extends TestCase
         unset($records[0]);
     }
 
-    private function zoneObject(): \stdClass
+    private function recordObject(): \stdClass
     {
         return (object) [
             'zone_id' => 'zoneId',
