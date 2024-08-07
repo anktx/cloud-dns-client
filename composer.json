@@ -1,0 +1,43 @@
+{
+  "name": "anktx/cloud-dns-client",
+  "type": "library",
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.2",
+    "psr/http-client": "^1.0",
+    "psr/http-factory": "^1.1"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.62",
+    "kriswallsmith/buzz": "^1.2",
+    "nyholm/psr7": "^1.8",
+    "phpstan/phpstan": "^1.11",
+    "phpunit/phpunit": "^10.5",
+    "vlucas/phpdotenv": "v5.6",
+    "roave/infection-static-analysis-plugin": "^1.35"
+  },
+  "autoload": {
+    "psr-4": {
+      "Anktx\\Cloud\\Dns\\Client\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Anktx\\Cloud\\Dns\\Client\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "infection/extension-installer": true
+    }
+  },
+  "scripts": {
+    "analyse": "phpstan analyse -v -l 6 ./src ./tests",
+    "cs-fix": "php-cs-fixer fix -v --diff",
+    "tests": "phpunit tests",
+    "infection": "infection --show-mutations"
+  }
+}

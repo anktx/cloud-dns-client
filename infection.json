@@ -1,0 +1,19 @@
+{
+  "source": {
+    "directories": [
+      "src"
+    ],
+    "excludes": [
+      "{.+Request.php}"
+    ]
+  },
+  "logs": {
+    "text": "php:\/\/stderr",
+    "stryker": {
+      "report": "master"
+    }
+  },
+  "mutators": {
+    "@default": true
+  }
+}

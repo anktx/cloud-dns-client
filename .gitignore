@@ -1,0 +1,10 @@
+
+/.idea/
+/.run/
+
+/vendor/
+/composer.lock
+
+/.phpunit.result.cache
+
+/tests/.env
