@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Anktx\Cloud\Dns\Client\Method\Zones;
 
+/**
+ * @implements \IteratorAggregate<int, Zone>
+ * @implements \ArrayAccess<int, Zone>
+ */
 final readonly class Zones implements \IteratorAggregate, \Countable, \ArrayAccess
 {
     /**
@@ -28,6 +32,9 @@ final readonly class Zones implements \IteratorAggregate, \Countable, \ArrayAcce
             );
     }
 
+    /**
+     * @return \ArrayIterator<int, Zone>
+     */
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->zones);

@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace Anktx\Cloud\Dns\Client\Method\Records;
 
+/**
+ * @implements \IteratorAggregate<int, Record>
+ * @implements \ArrayAccess<int, Record>
+ */
 final class Records implements \IteratorAggregate, \Countable, \ArrayAccess
 {
+    /**
+     * @var Record[]
+     */
     private array $records;
 
     public function __construct(Record ...$records)
@@ -18,6 +25,9 @@ final class Records implements \IteratorAggregate, \Countable, \ArrayAccess
         return new self(...array_map(fn (\stdClass $std) => Record::create($std), $std->items));
     }
 
+    /**
+     * @return \ArrayIterator<int, Record>
+     */
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->records);
