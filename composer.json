@@ -1,5 +1,6 @@
 {
   "name": "anktx/cloud-dns-client",
+  "description": "Cloud.ru DNS API Client",
   "type": "library",
   "minimum-stability": "stable",
   "prefer-stable": true,
