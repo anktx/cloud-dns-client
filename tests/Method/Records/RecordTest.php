@@ -50,7 +50,7 @@ final class RecordTest extends TestCase
     {
         $this->expectException(\BadMethodCallException::class);
 
-        $records = new Records();
+        $records = Records::create((object) ['items' => []]);
         $records[0] = Record::create($this->recordObject());
     }
 
@@ -58,7 +58,7 @@ final class RecordTest extends TestCase
     {
         $this->expectException(\BadMethodCallException::class);
 
-        $records = new Records();
+        $records = Records::create((object) ['items' => []]);
         unset($records[0]);
     }
 

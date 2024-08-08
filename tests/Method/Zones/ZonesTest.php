@@ -14,7 +14,7 @@ final class ZonesTest extends TestCase
     {
         $this->expectException(\BadMethodCallException::class);
 
-        $zones = new Zones();
+        $zones = Zones::create((object) ['items' => []]);
         $zones[0] = Zone::create($this->zoneObject());
     }
 
@@ -22,7 +22,7 @@ final class ZonesTest extends TestCase
     {
         $this->expectException(\BadMethodCallException::class);
 
-        $zones = new Zones();
+        $zones = Zones::create((object) ['items' => []]);
         unset($zones[0]);
     }
 
