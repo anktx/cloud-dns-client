@@ -68,7 +68,7 @@ $api->createZone('New zone', 'PROJECT_ID');
 The result will be either `FailResult` instance (on error) or an object of the corresponding type (on success). For example:
 
 ```php
-// Result is an array of `Record` objects
+// Result is a collection of `Record` objects
 $records = $api->getRecords('ZONE_ID');
 
 foreach ($records as $record) {

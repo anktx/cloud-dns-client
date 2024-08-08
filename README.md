@@ -71,7 +71,7 @@ $api->createZone('New zone', 'PROJECT_ID');
 Результат будет либо экземпляром `FailResult` (в случае ошибки), либо объектом соответствующего типа (в случае успеха). Например:
 
 ```php
-// Результат - массив объектов `Record`
+// Результат - коллекция объектов `Record`
 $records = $api->getRecords('ZONE_ID');
 
 foreach ($records as $record) {
