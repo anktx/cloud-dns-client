@@ -14,16 +14,7 @@ final class ZonesApiTest extends StubApi
     {
         $api = $this->createApiFromArray([
             'items' => [
-                [
-                    'id' => 'id',
-                    'name' => 'name',
-                    'parent_id' => 'parentId',
-                    'valid' => true,
-                    'validation_text' => 'validationText',
-                    'delegated' => true,
-                    'created_at' => '2022-01-01T00:00:00.000000Z',
-                    'updated_at' => '2022-01-01T00:00:00.000000Z',
-                ],
+                $this->zoneArray(),
             ],
         ]);
 
@@ -35,16 +26,7 @@ final class ZonesApiTest extends StubApi
 
     public function testGetZone(): void
     {
-        $api = $this->createApiFromArray([
-            'id' => 'id',
-            'name' => 'name',
-            'parent_id' => 'parentId',
-            'valid' => true,
-            'validation_text' => 'validationText',
-            'delegated' => true,
-            'created_at' => '2022-01-01T00:00:00.000000Z',
-            'updated_at' => '2022-01-01T00:00:00.000000Z',
-        ]);
+        $api = $this->createApiFromArray($this->zoneArray());
 
         $zone = $api->getZone('id');
 
@@ -54,16 +36,7 @@ final class ZonesApiTest extends StubApi
 
     public function testCreateZone(): void
     {
-        $api = $this->createApiFromArray([
-            'id' => 'id',
-            'name' => 'name',
-            'parent_id' => 'parentId',
-            'valid' => true,
-            'validation_text' => 'validationText',
-            'delegated' => true,
-            'created_at' => '2022-01-01T00:00:00.000000Z',
-            'updated_at' => '2022-01-01T00:00:00.000000Z',
-        ]);
+        $api = $this->createApiFromArray($this->zoneArray());
 
         $zone = $api->createZone('name', 'parentId');
 
@@ -73,7 +46,19 @@ final class ZonesApiTest extends StubApi
 
     public function testDeleteZone(): void
     {
-        $api = $this->createApiFromArray([
+        $api = $this->createApiFromArray($this->zoneArray());
+
+        $rst = $api->deleteZone('id');
+
+        $this->assertTrue($rst);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function zoneArray(): array
+    {
+        return [
             'id' => 'id',
             'name' => 'name',
             'parent_id' => 'parentId',
@@ -82,10 +67,6 @@ final class ZonesApiTest extends StubApi
             'delegated' => true,
             'created_at' => '2022-01-01T00:00:00.000000Z',
             'updated_at' => '2022-01-01T00:00:00.000000Z',
-        ]);
-
-        $rst = $api->deleteZone('id');
-
-        $this->assertTrue($rst);
+        ];
     }
 }

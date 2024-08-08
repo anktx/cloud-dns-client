@@ -15,15 +15,7 @@ final class RecordsApiTest extends StubApi
     {
         $api = $this->createApiFromArray([
             'items' => [
-                [
-                    'zone_id' => 'id',
-                    'name' => 'name',
-                    'type' => 'MX',
-                    'values' => ['value1', 'value2'],
-                    'ttl' => 3600,
-                    'enables' => true,
-                    'readonly' => true,
-                ],
+                $this->recordArray(),
             ],
         ]);
 
@@ -34,15 +26,7 @@ final class RecordsApiTest extends StubApi
 
     public function testGetRecord(): void
     {
-        $api = $this->createApiFromArray([
-            'zone_id' => 'id',
-            'name' => 'name',
-            'type' => 'MX',
-            'values' => ['value1', 'value2'],
-            'ttl' => 3600,
-            'enables' => true,
-            'readonly' => true,
-        ]);
+        $api = $this->createApiFromArray($this->recordArray());
 
         $record = $api->getRecord('id', RecordType::MX, 'name');
 
@@ -51,15 +35,7 @@ final class RecordsApiTest extends StubApi
 
     public function testCreateRecord(): void
     {
-        $api = $this->createApiFromArray([
-            'zone_id' => 'id',
-            'name' => 'name',
-            'type' => 'MX',
-            'values' => ['value1', 'value2'],
-            'ttl' => 3600,
-            'enables' => true,
-            'readonly' => true,
-        ]);
+        $api = $this->createApiFromArray($this->recordArray());
 
         $record = $api->createRecord(
             'id',
@@ -74,7 +50,19 @@ final class RecordsApiTest extends StubApi
 
     public function testDeleteRecord(): void
     {
-        $api = $this->createApiFromArray([
+        $api = $this->createApiFromArray($this->recordArray());
+
+        $rst = $api->deleteRecord('id', RecordType::MX, 'name');
+
+        $this->assertTrue($rst);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function recordArray(): array
+    {
+        return [
             'zone_id' => 'id',
             'name' => 'name',
             'type' => 'MX',
@@ -82,10 +70,6 @@ final class RecordsApiTest extends StubApi
             'ttl' => 3600,
             'enables' => true,
             'readonly' => true,
-        ]);
-
-        $rst = $api->deleteRecord('id', RecordType::MX, 'name');
-
-        $this->assertTrue($rst);
+        ];
     }
 }
