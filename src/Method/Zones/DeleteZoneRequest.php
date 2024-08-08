@@ -6,7 +6,7 @@ namespace Anktx\Cloud\Dns\Client\Method\Zones;
 
 use Anktx\Cloud\Dns\Client\Client\HttpMethod;
 use Anktx\Cloud\Dns\Client\Client\Request;
-use Anktx\Cloud\Dns\Client\Method\TrueValue;
+use Anktx\Cloud\Dns\Client\Stuff\TrueValue;
 
 final readonly class DeleteZoneRequest implements Request
 {
