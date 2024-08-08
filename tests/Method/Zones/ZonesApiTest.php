@@ -30,7 +30,7 @@ final class ZonesApiTest extends StubApi
         $zones = $api->getZones('parentId');
 
         $this->assertInstanceOf(Zones::class, $zones);
-        $this->assertInstanceOf(Zone::class, $zones[0]);
+        $this->assertCount(1, $zones);
     }
 
     public function testGetZone(): void

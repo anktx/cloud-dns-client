@@ -8,22 +8,20 @@ use Anktx\Cloud\Dns\Client\Method\Zones\Zone;
 use Anktx\Cloud\Dns\Client\Method\Zones\Zones;
 use PHPUnit\Framework\TestCase;
 
-final class ZonesTest extends TestCase
+final class ZoneTest extends TestCase
 {
-    public function testOffsetSetException(): void
+    public function testZonesCreate(): void
     {
-        $this->expectException(\BadMethodCallException::class);
+        $zones = Zones::create((object) [
+            'items' => [
+                $this->zoneObject(),
+                $this->zoneObject(),
+                $this->zoneObject(),
+            ],
+        ]);
 
-        $zones = Zones::create((object) ['items' => []]);
-        $zones[0] = Zone::create($this->zoneObject());
-    }
-
-    public function testOffsetUnsetException(): void
-    {
-        $this->expectException(\BadMethodCallException::class);
-
-        $zones = Zones::create((object) ['items' => []]);
-        unset($zones[0]);
+        $this->assertCount(3, $zones);
+        $this->assertContainsOnlyInstancesOf(Zone::class, $zones);
     }
 
     private function zoneObject(): \stdClass

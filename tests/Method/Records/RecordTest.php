@@ -30,36 +30,18 @@ final class RecordTest extends TestCase
         $this->assertEquals(3600, $record->ttl);
     }
 
-    public function testRecordsOffsetGet(): void
+    public function testRecordsCreate(): void
     {
-        $arr = [
+        $records = Records::create((object) [
             'items' => [
                 $this->recordObject(),
                 $this->recordObject(),
                 $this->recordObject(),
             ],
-        ];
+        ]);
 
-        $records = Records::create((object) $arr);
-
-        $this->assertInstanceOf(Record::class, $records[0]);
         $this->assertCount(3, $records);
-    }
-
-    public function testOffsetSetException(): void
-    {
-        $this->expectException(\BadMethodCallException::class);
-
-        $records = Records::create((object) ['items' => []]);
-        $records[0] = Record::create($this->recordObject());
-    }
-
-    public function testOffsetUnsetException(): void
-    {
-        $this->expectException(\BadMethodCallException::class);
-
-        $records = Records::create((object) ['items' => []]);
-        unset($records[0]);
+        $this->assertContainsOnlyInstancesOf(Record::class, $records);
     }
 
     private function recordObject(): \stdClass
