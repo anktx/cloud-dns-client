@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Anktx\Cloud\Dns\Client\Tests;
 
+use Anktx\Cloud\Dns\Client\Client\FailResult;
 use Anktx\Cloud\Dns\Client\CloudDnsApi;
 use Anktx\Cloud\Dns\Client\Method\Authenticate\AuthenticationRequest;
 use Anktx\Cloud\Dns\Client\Method\Authenticate\Token;
@@ -17,6 +18,17 @@ final class CloudDnsApiTest extends StubApi
         $response = $api->request(new AuthenticationRequest('client_id', 'client_secret'));
 
         $this->assertInstanceOf(Token::class, $response);
+    }
+
+    public function testErrorResponse(): void
+    {
+        $api = $this->createApiFromArray([
+            'error' => 'some error text',
+        ], httpCode: 429);
+
+        $response = $api->request(new AuthenticationRequest('client_id', 'client_secret'));
+
+        $this->assertInstanceOf(FailResult::class, $response);
     }
 
     public function testBuildBody(): void
