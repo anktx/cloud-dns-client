@@ -1,35 +1,38 @@
+
+### For english documentation see [README.en.md](README.en.md)
+
 # Cloud.ru DNS API client
 
 [![Latest Stable Version](https://poser.pugx.org/anktx/cloud-dns-client/v)](https://packagist.org/packages/anktx/cloud-dns-client)
 [![Total Downloads](https://poser.pugx.org/anktx/cloud-dns-client/downloads)](https://packagist.org/packages/anktx/cloud-dns-client)
 
-The package provides a PHP wrapper to interact with the Cloud.ru DNS API.
+Пакет предоставляет PHP-обёртку для взаимодействия с API DNS Cloud.ru.
 
-## Requirements
+## Требования
 
-- PHP 8.2 or higher.
+- PHP 8.2 или выше.
 
-## Installation
+## Установка
 
 ```shell
 composer require anktx/cloud-dns-client
 ```
 
-## General usage
+## Общие указания
 
-To interact with the [Cloud.ru DNS API](https://cloud.ru/docs/clouddns/ug/topics/api-ref.html),
-you need to create an instance of the `CloudDnsApi` class. This class requires a
-[PSR-18](https://www.php-fig.org/psr/psr-18/) `ClientInterface` implementation and `HttpAdapter`,
-which in turn requires [PSR-17](https://www.php-fig.org/psr/psr-17/) `RequestFactoryInterface`
-and `StreamFactoryInterface`.
+Для ваимодействия [Cloud.ru DNS API](https://cloud.ru/docs/clouddns/ug/topics/api-ref.html),
+необходимо создать экземпляр класса `CloudDnsApi`. Это класс требует реализацию интерфейса
+[PSR-18](https://www.php-fig.org/psr/psr-18/) `ClientInterface` и `HttpAdapter`,
+который в свою очередь требует реализации [PSR-17](https://www.php-fig.org/psr/psr-17/) `RequestFactoryInterface`
+и `StreamFactoryInterface`.
 
-You can use the [kriswallsmith/buzz](https://github.com/kriswallsmith/Buzz) and [nyholm/psr7](https://github.com/Nyholm/psr7) packages for this:
+Вы можете использовать пакеты [kriswallsmith/buzz](https://github.com/kriswallsmith/Buzz) и [nyholm/psr7](https://github.com/Nyholm/psr7) для этого:
 
 ```shell
 composer require kriswallsmith/buzz nyholm/psr7
 ```
 
-Here's now you can create an instance of `CloudDnsApi`:
+Вот как можно создать экзмепляр `CloudDnsApi`:
 
 ```php
 use Anktx\Cloud\Dns\Client\Client\HttpAdapter;
@@ -37,7 +40,7 @@ use Anktx\Cloud\Dns\Client\CloudDnsApi;
 use Buzz\Client\Curl;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
-// Dependencies
+// Зависимости
 $psr17Factory = new Psr17Factory();
 $httpAdapter = new HttpAdapter($psr17Factory, $psr17Factory);
 $httpClient = new Curl($psr17Factory);
@@ -49,26 +52,26 @@ $api = new CloudDnsApi(
 );
 ```
 
-First, obtain an authentication token and pass it to `HttpAdapter`:
+Сначала получите токен аутентификации и передате его в `HttpAdapter`:
 ```php
 $token = $api->authenticate('CLIENT_ID', 'CLIENT_SECRET');
 $httpAdapter->setToken($token);
 ```
 
-Now you can use the `$api` instance to interact with the Cloud.ru DNS API.
+Теперь вы можете использовать экземпляр `$api` для взаимодействия с Cloud.ru DNS API.
 
 ```php
-// Get zones
+// Получение зон
 $api->getZones('PROJECT_ID');
 
-// Create zone
+// Создание зоны
 $api->createZone('New zone', 'PROJECT_ID');
 ```
 
-The result will be either `FailResult` instance (on error) or an object of the corresponding type (on success). For example:
+Результат будет либо экземпляром `FailResult` (в случае ошибки), либо объектом соответствующего типа (в случае успеха). Например:
 
 ```php
-// Result is an array of `Record` objects
+// Результат - массив объектов `Record`
 $records = $api->getRecords('ZONE_ID');
 
 foreach ($records as $record) {
