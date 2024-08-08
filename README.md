@@ -6,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/anktx/cloud-dns-client/v)](https://packagist.org/packages/anktx/cloud-dns-client)
 [![Total Downloads](https://poser.pugx.org/anktx/cloud-dns-client/downloads)](https://packagist.org/packages/anktx/cloud-dns-client)
 
-Пакет предоставляет PHP-обёртку для взаимодействия с API DNS Cloud.ru.
+Пакет предоставляет PHP-обёртку для взаимодействия с DNS API Cloud.ru.
 
 ## Требования
 

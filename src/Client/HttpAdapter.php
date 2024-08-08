@@ -49,15 +49,6 @@ final class HttpAdapter
         );
     }
 
-    private function requestUrl(Request $request): string
-    {
-        if ($request instanceof AuthenticationRequest) {
-            return $request->url();
-        }
-
-        return $this->baseUrl . '/' . $request->url();
-    }
-
     public function setToken(Token $token): void
     {
         if ($token->isExpired(new \DateTimeImmutable(timezone: new \DateTimeZone('UTC')))) {
@@ -70,6 +61,15 @@ final class HttpAdapter
     public function token(): ?Token
     {
         return $this->token;
+    }
+
+    private function requestUrl(Request $request): string
+    {
+        if ($request instanceof AuthenticationRequest) {
+            return $request->url();
+        }
+
+        return $this->baseUrl . '/' . $request->url();
     }
 
     /**
