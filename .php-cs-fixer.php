@@ -20,6 +20,7 @@ return (new Config())
             'identical' => false,
         ],
         'final_class' => true,
+        'final_public_method_for_abstract_class' => true,
         'declare_strict_types' => true,
         'no_useless_else' => true,
         'not_operator_with_successor_space' => true,

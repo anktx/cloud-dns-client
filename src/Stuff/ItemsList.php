@@ -23,32 +23,35 @@ abstract readonly class ItemsList implements \IteratorAggregate, \ArrayAccess, \
     /**
      * @return \ArrayIterator<int, T>
      */
-    public function getIterator(): \Traversable
+    final public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->items);
     }
 
-    public function offsetExists(mixed $offset): bool
+    final public function offsetExists(mixed $offset): bool
     {
         return isset($this->items[$offset]);
     }
 
-    public function offsetGet(mixed $offset): mixed
+    /**
+     * @return T
+     */
+    final public function offsetGet(mixed $offset): mixed
     {
         return $this->items[$offset];
     }
 
-    public function offsetSet(mixed $offset, mixed $value): void
+    final public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new \BadMethodCallException();
     }
 
-    public function offsetUnset(mixed $offset): void
+    final public function offsetUnset(mixed $offset): void
     {
         throw new \BadMethodCallException();
     }
 
-    public function count(): int
+    final public function count(): int
     {
         return \count($this->items);
     }
