@@ -16,7 +16,7 @@
     "phpstan/phpstan": "^1.11",
     "phpunit/phpunit": "^10.5",
     "vlucas/phpdotenv": "v5.6",
-    "roave/infection-static-analysis-plugin": "^1.35"
+    "infection/infection": "^0.29"
   },
   "autoload": {
     "psr-4": {
@@ -36,8 +36,8 @@
     }
   },
   "scripts": {
-    "analyse": "phpstan analyse -v -l 6 ./src ./tests",
-    "cs-fix": "php-cs-fixer fix -v --diff",
+    "analyse": "phpstan analyse -v --level 6 --no-progress ./src ./tests",
+    "cs-fix": "php-cs-fixer fix -v --diff --show-progress=dots",
     "tests": "phpunit tests",
     "infection": "infection --show-mutations"
   }
