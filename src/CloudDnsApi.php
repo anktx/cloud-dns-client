@@ -29,72 +29,71 @@ final readonly class CloudDnsApi
     public function __construct(
         private ClientInterface $client,
         private HttpAdapter $httpAdapter,
-    ) {
-    }
+    ) {}
 
-    public function authenticate(string $clientId, string $clientSecret): Token|FailResult
+    public function authenticate(string $clientId, string $clientSecret): FailResult|Token
     {
         return $this->request(
-            new AuthenticationRequest($clientId, $clientSecret)
+            new AuthenticationRequest($clientId, $clientSecret),
         );
     }
 
-    public function getZones(string $parentId): Zones|FailResult
+    public function getZones(string $parentId): FailResult|Zones
     {
         return $this->request(
-            new GetZonesRequest($parentId)
+            new GetZonesRequest($parentId),
         );
     }
 
-    public function getZone(string $id): Zone|FailResult
+    public function getZone(string $id): FailResult|Zone
     {
         return $this->request(
-            new GetZoneRequest($id)
+            new GetZoneRequest($id),
         );
     }
 
-    public function createZone(string $name, string $parentId): Zone|FailResult
+    public function createZone(string $name, string $parentId): FailResult|Zone
     {
         return $this->request(
-            new CreateZoneRequest(name: $name, parentId: $parentId)
+            new CreateZoneRequest(name: $name, parentId: $parentId),
         );
     }
 
-    public function deleteZone(string $id): true|FailResult
+    public function deleteZone(string $id): FailResult|true
     {
         return $this->request(
-            new DeleteZoneRequest($id)
+            new DeleteZoneRequest($id),
         );
     }
 
-    public function getRecords(string $zoneId): Records|FailResult
+    public function getRecords(string $zoneId): FailResult|Records
     {
         return $this->request(
-            new GetRecordsRequest($zoneId)
+            new GetRecordsRequest($zoneId),
         );
     }
 
-    public function getRecord(string $zoneId, RecordType $type, string $name): Record|FailResult
+    public function getRecord(string $zoneId, RecordType $type, string $name): FailResult|Record
     {
         return $this->request(
-            new GetRecordRequest($zoneId, $type, $name)
+            new GetRecordRequest($zoneId, $type, $name),
         );
     }
 
     /**
      * @param string[] $values
      */
-    public function createRecord(string $zoneId, RecordType $type, string $name, int $ttl, array $values): Record|FailResult
+    public function createRecord(string $zoneId, RecordType $type, string $name, int $ttl, array $values): FailResult|Record
     {
         return $this->request(
-            new CreateRecordRequest(zoneId: $zoneId, name: $name, ttl: $ttl, type: $type, values: $values)
+            new CreateRecordRequest(zoneId: $zoneId, name: $name, ttl: $ttl, type: $type, values: $values),
         );
     }
 
-    public function deleteRecord(string $zoneId, RecordType $type, string $name): true|FailResult
+    public function deleteRecord(string $zoneId, RecordType $type, string $name): FailResult|true
     {
         return $this->request(
-            new DeleteRecordRequest(zoneId: $zoneId, type: $type, name: $name)
+            new DeleteRecordRequest(zoneId: $zoneId, type: $type, name: $name),
         );
     }
 

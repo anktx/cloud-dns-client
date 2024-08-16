@@ -11,8 +11,7 @@ final readonly class GetRecordsRequest implements Request
 {
     public function __construct(
         private string $zoneId,
-    ) {
-    }
+    ) {}
 
     public function method(): HttpMethod
     {

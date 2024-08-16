@@ -49,7 +49,7 @@ final class HttpAdapterTest extends StubApi
 
         $httpRequest = $httpAdapter->toHttpRequest(new GetZonesRequest(''));
 
-        $this->assertEquals('Bearer ' . $bearer, $httpRequest->getHeaderLine('Authorization'));
+        $this->assertSame('Bearer ' . $bearer, $httpRequest->getHeaderLine('Authorization'));
     }
 
     public function testAuthenticationRequestUrl(): void
@@ -59,7 +59,7 @@ final class HttpAdapterTest extends StubApi
         $request = new AuthenticationRequest('login', 'password');
         $httpRequest = $httpAdapter->toHttpRequest($request);
 
-        $this->assertEquals($request->url(), (string) $httpRequest->getUri());
+        $this->assertSame($request->url(), (string) $httpRequest->getUri());
     }
 
     public function testGetZonesRequestUrl(): void
@@ -69,7 +69,7 @@ final class HttpAdapterTest extends StubApi
         $request = new GetZonesRequest('');
         $httpRequest = $httpAdapter->toHttpRequest($request);
 
-        $this->assertEquals($httpAdapter->baseUrl . '/' . $request->url(), (string) $httpRequest->getUri());
+        $this->assertSame($httpAdapter->baseUrl . '/' . $request->url(), (string) $httpRequest->getUri());
     }
 
     public function testAuthenticationRequestBody(): void
@@ -81,7 +81,7 @@ final class HttpAdapterTest extends StubApi
 
         $query = http_build_query(['grant_type' => 'access_key', 'client_id' => 'login', 'client_secret' => 'password']);
 
-        $this->assertEquals($query, $httpRequest->getBody()->getContents());
+        $this->assertSame($query, $httpRequest->getBody()->getContents());
     }
 
     public function testCreateZoneRequestBody(): void
@@ -93,6 +93,6 @@ final class HttpAdapterTest extends StubApi
 
         $json = '{"name":"zone","parentId":"parent"}';
 
-        $this->assertEquals($json, $httpRequest->getBody()->getContents());
+        $this->assertSame($json, $httpRequest->getBody()->getContents());
     }
 }

@@ -11,12 +11,12 @@
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.62",
-    "kriswallsmith/buzz": "^1.2",
-    "nyholm/psr7": "^1.8",
     "phpstan/phpstan": "^1.11",
     "phpunit/phpunit": "^10.5",
-    "vlucas/phpdotenv": "v5.6",
-    "infection/infection": "^0.29"
+    "infection/infection": "^0.29",
+    "kriswallsmith/buzz": "^1.2",
+    "nyholm/psr7": "^1.8",
+    "vlucas/phpdotenv": "v5.6"
   },
   "autoload": {
     "psr-4": {
@@ -39,6 +39,6 @@
     "analyse": "phpstan analyse -v --level 6 --no-progress ./src ./tests",
     "cs-fix": "php-cs-fixer fix -v --diff --show-progress=dots",
     "tests": "phpunit tests",
-    "infection": "infection --show-mutations"
+    "infection": "infection --show-mutations --no-progress"
   }
 }

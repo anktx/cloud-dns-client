@@ -4,36 +4,30 @@ declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
-use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 return (new Config())
-    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setRules([
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
         '@PER-CS2.0' => true,
-        '@Symfony' => true,
-        'concat_space' => [
-            'spacing' => 'one',
-        ],
+        '@PER-CS2.0:risky' => true,
+        'declare_strict_types' => true,
         'yoda_style' => [
             'equal' => false,
             'identical' => false,
+            'less_and_greater' => false,
         ],
         'final_class' => true,
         'final_public_method_for_abstract_class' => true,
-        'declare_strict_types' => true,
-        'no_useless_else' => true,
-        'not_operator_with_successor_space' => true,
-        'not_operator_with_space' => false,
-        'multiline_comment_opening_closing' => true,
-        'native_function_invocation' => [
-            'include' => ['@compiler_optimized'],
-        ],
         'native_constant_invocation' => true,
+        'return_assignment' => false,
+        'php_unit_internal_class' => false,
+        'php_unit_test_class_requires_covers' => false,
+        'php_unit_test_case_static_method_calls' => false,
     ])
     ->setFinder(
         Finder::create()
             ->exclude('vendor')
-            ->in(__DIR__)
-    )
-    ->setUsingCache(false);
+            ->in(__DIR__),
+    )->setCacheFile(__DIR__ . '/.cache/php-cs-fixer.cache');

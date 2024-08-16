@@ -16,8 +16,7 @@ abstract readonly class ItemsList implements \IteratorAggregate, \Countable
      */
     protected function __construct(
         private array $items,
-    ) {
-    }
+    ) {}
 
     /**
      * @return \ArrayIterator<int, T>

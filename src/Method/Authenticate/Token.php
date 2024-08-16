@@ -12,8 +12,7 @@ final readonly class Token
         public \DateTimeImmutable $expiresIn,
         public string $scope,
         public string $tokenType,
-    ) {
-    }
+    ) {}
 
     public static function create(\stdClass $std): self
     {

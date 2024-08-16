@@ -12,8 +12,7 @@ final readonly class AuthenticationRequest implements Request
     public function __construct(
         private string $clientId,
         private string $clientSecret,
-    ) {
-    }
+    ) {}
 
     public function method(): HttpMethod
     {

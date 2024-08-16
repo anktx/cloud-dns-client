@@ -24,7 +24,7 @@ final class CloudDnsApiRealTest extends TestCase
 
         $api = new CloudDnsApi(
             client: $httpClient,
-            httpAdapter: $adapter
+            httpAdapter: $adapter,
         );
 
         $token = $api->authenticate($_ENV['CLIENT_ID'], $_ENV['CLIENT_SECRET']);

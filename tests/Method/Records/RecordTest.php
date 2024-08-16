@@ -13,21 +13,21 @@ final class RecordTest extends TestCase
 {
     public function testCreateFromString(): void
     {
-        $this->assertEquals(RecordType::A, RecordType::from('A'));
-        $this->assertEquals(RecordType::CNAME, RecordType::from('CNAME'));
-        $this->assertEquals(RecordType::MX, RecordType::from('MX'));
-        $this->assertEquals(RecordType::TXT, RecordType::from('TXT'));
-        $this->assertEquals(RecordType::SRV, RecordType::from('SRV'));
-        $this->assertEquals(RecordType::NS, RecordType::from('NS'));
-        $this->assertEquals(RecordType::SOA, RecordType::from('SOA'));
-        $this->assertEquals(RecordType::AAAA, RecordType::from('AAAA'));
+        $this->assertSame(RecordType::A, RecordType::from('A'));
+        $this->assertSame(RecordType::CNAME, RecordType::from('CNAME'));
+        $this->assertSame(RecordType::MX, RecordType::from('MX'));
+        $this->assertSame(RecordType::TXT, RecordType::from('TXT'));
+        $this->assertSame(RecordType::SRV, RecordType::from('SRV'));
+        $this->assertSame(RecordType::NS, RecordType::from('NS'));
+        $this->assertSame(RecordType::SOA, RecordType::from('SOA'));
+        $this->assertSame(RecordType::AAAA, RecordType::from('AAAA'));
     }
 
     public function testTtlIsInteger(): void
     {
         $record = Record::create($this->recordObject());
 
-        $this->assertEquals(3600, $record->ttl);
+        $this->assertSame(3600, $record->ttl);
     }
 
     public function testRecordsCreate(): void

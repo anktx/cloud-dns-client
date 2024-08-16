@@ -9,6 +9,5 @@ final readonly class FailResult
     public function __construct(
         public Request $request,
         public Response $response,
-    ) {
-    }
+    ) {}
 }

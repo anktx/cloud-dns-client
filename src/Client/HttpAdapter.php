@@ -22,8 +22,7 @@ final class HttpAdapter
         private readonly RequestFactoryInterface $requestFactory,
         private readonly StreamFactoryInterface $streamFactory,
         public readonly string $baseUrl = 'https://console.cloud.ru/api',
-    ) {
-    }
+    ) {}
 
     public function toHttpRequest(Request $request): RequestInterface
     {
@@ -37,7 +36,7 @@ final class HttpAdapter
         $body = $this->createRequestBody($request);
 
         return $httpRequest->withBody(
-            $this->streamFactory->createStream($body)
+            $this->streamFactory->createStream($body),
         );
     }
 

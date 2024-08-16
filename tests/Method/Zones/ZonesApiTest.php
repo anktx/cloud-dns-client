@@ -31,7 +31,7 @@ final class ZonesApiTest extends StubApi
         $zone = $api->getZone('id');
 
         $this->assertInstanceOf(Zone::class, $zone);
-        $this->assertEquals('id', $zone->id);
+        $this->assertSame('id', $zone->id);
     }
 
     public function testCreateZone(): void
@@ -41,7 +41,7 @@ final class ZonesApiTest extends StubApi
         $zone = $api->createZone('name', 'parentId');
 
         $this->assertInstanceOf(Zone::class, $zone);
-        $this->assertEquals('id', $zone->id);
+        $this->assertSame('id', $zone->id);
     }
 
     public function testDeleteZone(): void

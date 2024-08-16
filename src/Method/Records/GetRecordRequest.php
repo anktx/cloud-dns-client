@@ -13,8 +13,7 @@ final readonly class GetRecordRequest implements Request
         private string $zoneId,
         private RecordType $type,
         private string $name,
-    ) {
-    }
+    ) {}
 
     public function method(): HttpMethod
     {

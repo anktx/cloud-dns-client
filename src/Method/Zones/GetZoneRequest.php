@@ -11,8 +11,7 @@ final readonly class GetZoneRequest implements Request
 {
     public function __construct(
         private string $id,
-    ) {
-    }
+    ) {}
 
     public function method(): HttpMethod
     {

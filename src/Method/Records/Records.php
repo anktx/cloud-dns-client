@@ -13,6 +13,6 @@ final readonly class Records extends ItemsList
 {
     public static function create(\stdClass $std): self
     {
-        return new self(array_map(fn (\stdClass $std) => Record::create($std), $std->items));
+        return new self(array_map(static fn(\stdClass $std) => Record::create($std), $std->items));
     }
 }

@@ -15,8 +15,7 @@ final readonly class Zone
         public bool $delegated,
         public \DateTimeImmutable $createdAt,
         public \DateTimeImmutable $updatedAt,
-    ) {
-    }
+    ) {}
 
     public static function create(\stdClass $std): self
     {

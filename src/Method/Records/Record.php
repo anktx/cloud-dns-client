@@ -17,8 +17,7 @@ final readonly class Record
         public int $ttl,
         public bool $enables,
         public bool $readonly,
-    ) {
-    }
+    ) {}
 
     public static function create(\stdClass $std): self
     {

@@ -12,8 +12,7 @@ final readonly class DeleteZoneRequest implements Request
 {
     public function __construct(
         private string $id,
-    ) {
-    }
+    ) {}
 
     public function method(): HttpMethod
     {

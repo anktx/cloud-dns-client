@@ -12,8 +12,7 @@ final readonly class CreateZoneRequest implements Request
     public function __construct(
         private string $name,
         private string $parentId,
-    ) {
-    }
+    ) {}
 
     public function method(): HttpMethod
     {

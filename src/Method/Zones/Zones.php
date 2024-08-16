@@ -13,6 +13,6 @@ final readonly class Zones extends ItemsList
 {
     public static function create(\stdClass $std): self
     {
-        return new self(array_map(fn (\stdClass $item) => Zone::create($item), $std->items));
+        return new self(array_map(static fn(\stdClass $item) => Zone::create($item), $std->items));
     }
 }
